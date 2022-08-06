@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ Route::get('/', function () {
 });
 
 Route::post('/login', [AuthController::class, 'login']) -> name('submit_login');
+
+Route::get('/dashboard', function() {
+    return Auth::user();
+});
