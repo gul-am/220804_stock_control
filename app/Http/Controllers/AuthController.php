@@ -6,26 +6,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+
 class AuthController extends Controller
 {
-    //
+
+    //gerar coneccao com base de dados
 
     public function login(Request $request){
 
 
-        $credentials = $request->validate([
+        $regles = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($regles)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dasboard');
+            return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([
-            'email' => 'Email or Password is wrong.',
-        ])->onlyInput('email');
+            'email' => 'Email not recognized.',
+        ]);
     }
 }
