@@ -21,6 +21,4 @@ Route::get('/', function () {
 
 Route::post('/login', [AuthController::class, 'login']) -> name('submit_login');
 
-Route::get('/dashboard', function() {
-    return Auth::user();
-});
+Route::get('/dashboard', [AuthController::class, 'index']) -> name('dashboard');
