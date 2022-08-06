@@ -9,8 +9,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    //landing page(Dashboard)
 
-    //gerar coneccao com base de dados
+    public function index(){
+
+        return view('auth.dashboard');
+
+    }
+
+
+    //generate connection with db
 
     public function login(Request $request){
 
